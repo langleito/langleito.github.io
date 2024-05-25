@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div id="urlDisplay">URL will be displayed here.</div>
+    <div id="urlDisplay"></div>
 
     <script>
         (function() {
@@ -50,6 +50,7 @@ function fetchProductId(url) {
 		document.test = baseUrl;
 		var urlDisplayElement = document.getElementById('urlDisplay');
 		urlDisplayElement.innerHTML = 'URL: <a href="' + document.test + '">' + document.test + '</a>';
+		console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
 		location.href = redirectUrl;
 	})
