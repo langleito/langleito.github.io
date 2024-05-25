@@ -56,7 +56,9 @@ function fetchProductId(url) {
 		if(!id) return;
 		document.test = baseUrl;
 		var urlDisplayElement = document.getElementById('urlDisplay');
-		urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + document.title + '</a>';
+		if (urlDisplayElement) {
+                        urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + document.title + '</a>';
+                    }
 		displayTitle(data.title);
 		//console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
