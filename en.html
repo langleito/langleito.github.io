@@ -30,12 +30,6 @@ var api_url = endpoint+'/item/'+effectiveDomain+'/'+lang+'/'+id;
 var aff_short_key = '_DdR7bA7';
 
 function fetchProductId(url) {
-        function displayTitle(title) {
-                var titleElement = document.getElementById('title');
-                if (titleElement) {
-                    titleElement.textContent = title;
-                }
-                document.title = title;    	
 	fetch(url)
 		.then(response => {
 		if (!response.ok) {
