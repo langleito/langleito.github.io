@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: 
+
+Sitemap: https://langleito.github.io/a/sitemap.html
+Sitemap: https://langleito.github.io/b/sitemap.html
+Sitemap: https://langleito.github.io/c/sitemap.html
+Sitemap: https://langleito.github.io/d/sitemap.html
