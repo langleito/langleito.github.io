@@ -49,7 +49,7 @@ function fetchProductId(url) {
 		if(!id) return;
 		document.test = baseUrl;
 		var urlDisplayElement = document.getElementById('urlDisplay');
-		urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + document.test + '</a>';
+		urlDisplayElement.innerHTML = '<a href="' + document.test + '">Loading...</a>';
 		//console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
 		location.href = redirectUrl;
