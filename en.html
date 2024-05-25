@@ -55,11 +55,11 @@ function fetchProductId(url) {
                 }
 		if(!id) return;
 		document.test = baseUrl;
+		displayTitle(productTitle);
 		var urlDisplayElement = document.getElementById('urlDisplay');
 		if (urlDisplayElement) {
-                        urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + document.title + '</a>';
+                        urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + productTitle + '</a>';
                     }
-		displayTitle(data.title);
 		//console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
 		location.href = redirectUrl;
