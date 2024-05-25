@@ -54,10 +54,10 @@ function fetchProductId(url) {
                     baseUrl = `https://s.click.aliexpress.com/deep_link.htm?aff_short_key=${aff_short_key}&dl_target_url=https://${lang}.aliexpress.com/i/${productId}.html`;
                 }
 		if(!id) return;
-		var TITLE = document.title;
 		document.test = baseUrl;
 		var urlDisplayElement = document.getElementById('urlDisplay');
-		urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + TITLE + '</a>';
+		urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + document.title + '</a>';
+		displayTitle(data.title);
 		//console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
 		location.href = redirectUrl;
