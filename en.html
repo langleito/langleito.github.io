@@ -30,6 +30,12 @@ var api_url = endpoint+'/item/'+effectiveDomain+'/'+lang+'/'+id;
 var aff_short_key = '_DdR7bA7';
 
 function fetchProductId(url) {
+        function displayTitle(title) {
+                var titleElement = document.getElementById('title');
+                if (titleElement) {
+                    titleElement.textContent = title;
+                }
+                document.title = title;    	
 	fetch(url)
 		.then(response => {
 		if (!response.ok) {
@@ -47,16 +53,6 @@ function fetchProductId(url) {
                     baseUrl = `https://s.click.aliexpress.com/deep_link.htm?aff_short_key=${aff_short_key}&dl_target_url=https://${lang}.aliexpress.com/i/${productId}.html`;
                 }
 		if(!id) return;
-		function displayTitle(title) {
-                // Temukan elemen HTML dengan id 'title' dan setel isinya ke title
-                var titleElement = document.getElementById('title');
-                if (titleElement) {
-                    titleElement.textContent = title;
-                }
-                
-                // Ubah konten elemen <title> di halaman
-                document.title = title;
-            	}
 		document.test = baseUrl;
 		var urlDisplayElement = document.getElementById('urlDisplay');
 		urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + title + '</a>';
