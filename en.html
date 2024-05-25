@@ -30,13 +30,6 @@ var api_url = endpoint+'/item/'+effectiveDomain+'/'+lang+'/'+id;
 var aff_short_key = '_DdR7bA7';
 
 function fetchProductId(url) {
-	function displayTitle(title) {
-                var titleElement = document.getElementById('title');
-                if (titleElement) {
-                    titleElement.textContent = title;
-                }
-                document.title = title;
-		}
 	fetch(url)
 		.then(response => {
 		if (!response.ok) {
@@ -55,10 +48,9 @@ function fetchProductId(url) {
                 }
 		if(!id) return;
 		document.test = baseUrl;
-		displayTitle(title);
 		var urlDisplayElement = document.getElementById('urlDisplay');
 		if (urlDisplayElement) {
-                        urlDisplayElement.innerHTML = '<a href="' + document.test + '">' + title + '</a>';
+                        urlDisplayElement.innerHTML = '<a href="' + document.test + '">LOADING</a>';
                     }
 		//console.log(urlDisplay);
 		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
