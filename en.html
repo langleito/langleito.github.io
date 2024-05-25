@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="urlDisplay">URL will be displayed here.</div>
+
+    <script>
+        (function() {
+var referrer = document.referrer;
+    var refDomain = '';
+
+    try {
+        var parsedReferrer = new URL(referrer);
+        refDomain = parsedReferrer.hostname;
+    } catch (e) {
+        console.error('Invalid referrer URL:', referrer);
+    }
+
+var endpoint = 'https://api.buytostore.com';
+var domain = location.hostname;
+var subdomain = domain.split('.')[0];
+var lang = location.pathname.split('/').pop(); // 'es';
+var id = location.search.split('&').shift().split('~').pop();
+var effectiveDomain = refDomain || domain;
+var api_url = endpoint+'/item/'+effectiveDomain+'/'+lang+'/'+id;
+
+var aff_short_key = '_DdR7bA7';
+
+function fetchProductId(url) {
+	fetch(url)
+		.then(response => {
+		if (!response.ok) {
+			throw new Error('Network response was not ok ' + response.statusText);
+		}
+		return response.json();
+	})
+		.then(data => {
+		var productId = data.productId;
+		var isBot = /bot|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex/i.test(navigator.userAgent);
+		var baseUrl;
+                if (lang === 'en') {
+                    baseUrl = `https://s.click.aliexpress.com/deep_link.htm?aff_short_key=${aff_short_key}&dl_target_url=https://www.aliexpress.com/item/${productId}.html`;
+                } else {
+                    baseUrl = `https://s.click.aliexpress.com/deep_link.htm?aff_short_key=${aff_short_key}&dl_target_url=https://${lang}.aliexpress.com/i/${productId}.html`;
+                }
+		if(!id) return;
+		var redirectUrl = isBot ? baseUrl : 'https://'+subdomain+'.mbulet.co/item/'+effectiveDomain+'/'+id;
+		location.href = redirectUrl;
+	})
+		.catch(error => {
+		console.error('There was a problem with the fetch operation:', error);
+	});
+	document.test = baseUrl;
+	var urlDisplayElement = document.getElementById('urlDisplay');
+	urlDisplayElement.innerHTML = 'URL: <a href="' + document.test + '">' + document.test + '</a>';
+}
+fetchProductId(api_url);
+})();
+    </script>
+</body>
+</html>
